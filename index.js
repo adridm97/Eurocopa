@@ -16,7 +16,7 @@ teams.forEach(match => {
         winner = match.local;
         winners.push(winner);
     } else {
-        console.log(` ${match.visitante} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.visitante}`);
+        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.visitante}`);
         winner = match.visitante;
         winners.push(winner);
     }
