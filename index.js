@@ -4,24 +4,15 @@ import { Partido } from './Partido.js'
 console.log('==============================================');
 console.log('==== COMIENZO DE LA FASE DE ELIMINATORIAS ====');
 console.log('==============================================');
+teams.forEach(team => {
+    console.log(`${team.local}, ${team.visitante} `);
+})
 console.log('==== OCTAVOS DE FINAL ====');
 var winners = [];
 var winner;
 //inicializaPartido();
-teams.forEach(match => {
 
-    const resultadoLocal = Math.floor(Math.random() * (10 - 0) + 0);
-    const resultadoVisitante = Math.floor(Math.random() * (10 - 0) + 0);
-    if (resultadoLocal >= resultadoVisitante) {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.local}`);
-        winner = match.local;
-        winners.push(winner);
-    } else {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.visitante}`);
-        winner = match.visitante;
-        winners.push(winner);
-    }
-});
+juegaPartido();
 
 
 console.log('==== CUARTOS DE FINAL ====');
@@ -53,20 +44,7 @@ teams.forEach(matchAway => {
 
 winners = [];
 // inicializaPartido();
-teams.forEach(match => {
-
-    const resultadoLocal = Math.floor(Math.random() * (10 - 0) + 0);
-    const resultadoVisitante = Math.floor(Math.random() * (10 - 0) + 0);
-    if (resultadoLocal >= resultadoVisitante) {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.local}`);
-        winner = match.local;
-        winners.push(winner);
-    } else {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.visitante}`);
-        winner = match.visitante;
-        winners.push(winner);
-    }
-});
+juegaPartido();
 
 console.log('==== SEMIFINALES ====');
 
@@ -98,20 +76,7 @@ teams.forEach(matchAway => {
 
 winners = [];
 // inicializaPartido();
-teams.forEach(match => {
-    var winner;
-    const resultadoLocal = Math.floor(Math.random() * (10 - 0) + 0);
-    const resultadoVisitante = Math.floor(Math.random() * (10 - 0) + 0);
-    if (resultadoLocal >= resultadoVisitante) {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.local}`);
-        winner = match.local;
-        winners.push(winner);
-    } else {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.visitante}`);
-        winner = match.visitante;
-        winners.push(winner);
-    }
-});
+juegaPartido();
 console.log('==== FINAL ====');
 
 rondas = winners.length / 2;
@@ -142,21 +107,38 @@ teams.forEach(matchAway => {
 
 winners = [];
 // inicializaPartido();
-teams.forEach(match => {
-    var winner;
-    const resultadoLocal = Math.floor(Math.random() * (10 - 0) + 0);
-    const resultadoVisitante = Math.floor(Math.random() * (10 - 0) + 0);
-    if (resultadoLocal > resultadoVisitante) {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.local}`);
-        winner = match.local;
-        winners.push(winner);
-    } else {
-        console.log(` ${match.local} ${resultadoLocal} - ${resultadoVisitante} ${match.visitante} => ${match.visitante}`);
-        winner = match.visitante;
-        winners.push(winner);
-    }
-});
+juegaPartido();
 
 console.log('==============================================');
 console.log(`===== ${winners} GANADOR DE LA EURO 2020 =====`);
 console.log('==============================================');
+
+function resultadoLocal() {
+    var a = Math.floor(Math.random() * (10 - 0) + 0);
+    return a;
+}
+
+function resultadoVisitante() {
+    var a = Math.floor(Math.random() * (10 - 0) + 0);
+    return a;
+}
+
+function juegaPartido() {
+    teams.forEach(match => {
+        var winner;
+        do {
+            var local = resultadoLocal();
+            var visitante = resultadoVisitante();
+        } while (local === visitante)
+
+        if (local >= visitante) {
+            console.log(` ${match.local} ${local} - ${visitante} ${match.visitante} => ${match.local}`);
+            winner = match.local;
+            winners.push(winner);
+        } else {
+            console.log(` ${match.local} ${local} - ${visitante} ${match.visitante} => ${match.visitante}`);
+            winner = match.visitante;
+            winners.push(winner);
+        }
+    });
+}
