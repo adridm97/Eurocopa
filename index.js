@@ -5,7 +5,7 @@ console.log('==============================================');
 console.log('==== COMIENZO DE LA FASE DE ELIMINATORIAS ====');
 console.log('==============================================');
 teams.forEach(team => {
-    console.log(`${team.local}, ${team.visitante} `);
+    console.log(`${team.local} - ${team.visitante} `);
 })
 console.log('==== OCTAVOS DE FINAL ====');
 var winners = [];
